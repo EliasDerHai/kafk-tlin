@@ -28,11 +28,11 @@ fun Application.configureDatabases() {
         common {
             bootstrapServers = listOf("localhost:19092", "localhost:19093")
             retries = 1
-            clientId = "ping-client-id"
+            clientId = "pong-client-id"
         }
         admin { }
         producer {
-            clientId = "ping-client-id"
+            clientId = "pong-client-id"
         }
         consumer {
             groupId = "pong-group-id"
@@ -40,7 +40,8 @@ fun Application.configureDatabases() {
         }
         consumerConfig {
            consumerRecordHandler(pingTopic) { record ->
-               println(pingTopic)
+               println("Received ping: ${record.value()}")
+               println("From partition: ${record.partition()}, offset: ${record.offset()}")
            }
         }
         registerSchemas {
@@ -50,3 +51,4 @@ fun Application.configureDatabases() {
         }
     }
 }
+
