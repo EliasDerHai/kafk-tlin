@@ -34,10 +34,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-/kafka1
-/kafka2
-/kafka3
-
-CLAUDE.md
-**/.DS_Store
