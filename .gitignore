@@ -1,27 +1,27 @@
-.gradle
-build/
+**/.gradle
+**/build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
 
 ### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
+**/.apt_generated
+**/.classpath
+**/.factorypath
+**/.project
+**/.settings
+**/.springBeans
+**/.sts4-cache
+**/bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
 .idea
-*.iws
-*.iml
-*.ipr
-out/
+**/*.iws
+**/*.iml
+**/*.ipr
+**/out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
@@ -33,7 +33,7 @@ out/
 /.nb-gradle/
 
 ### VS Code ###
-.vscode/
+**/.vscode/
 
 /kafka1
 /kafka2
@@ -41,3 +41,10 @@ out/
 
 CLAUDE.md
 **/.DS_Store
+
+### Kotlin ###
+**/.kotlin/
+
+### IntelliJ IDEA specific ###
+/shelf/
+/workspace.xml
