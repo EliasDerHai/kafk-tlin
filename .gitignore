@@ -1,3 +1,4 @@
+**/.DS_Store
 **/.gradle
 **/build/
 !gradle/wrapper/gradle-wrapper.jar
@@ -35,16 +36,16 @@
 ### VS Code ###
 **/.vscode/
 
-/kafka1
-/kafka2
-/kafka3
-
-CLAUDE.md
-**/.DS_Store
-
 ### Kotlin ###
 **/.kotlin/
 
 ### IntelliJ IDEA specific ###
 /shelf/
 /workspace.xml
+
+### Project ###
+/kafka1
+/kafka2
+/kafka3
+/CLAUDE.md
+/ROADMAP.md

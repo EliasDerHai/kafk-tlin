@@ -13,10 +13,12 @@ import io.github.flaxoos.ktor.server.plugins.kafka.registerSchemas
 import io.github.flaxoos.ktor.server.plugins.kafka.topic
 import io.ktor.client.HttpClient
 import io.ktor.server.application.*
+import io.ktor.server.config.tryGetString
 
 fun Application.configureDatabases() {
     install(Kafka) {
-        schemaRegistryUrl = "http://localhost:7788"
+        schemaRegistryUrl = environment.config.tryGetString("ktor.kafka.schema.registry.url")
+            ?: "http://localhost:7788"
         val pingTopic = TopicName.named("ping")
         topic(pingTopic) {
             partitions = 1
@@ -26,7 +28,9 @@ fun Application.configureDatabases() {
             }
         }
         common {
-            bootstrapServers = listOf("localhost:19092", "localhost:19093")
+            bootstrapServers = environment.config.tryGetString("ktor.kafka.common.bootstrap.servers")
+                ?.split(",")?.map { it.trim() }
+                ?: listOf("localhost:19092", "localhost:19093")
             retries = 1
             clientId = "pong-client-id"
         }

@@ -22,7 +22,7 @@ application {
 }
 
 dependencies {
-    implementation("io.confluent:kafka-avro-serializer:7.8.0")
+    implementation(libs.kafka.avro.serializer)
     implementation(libs.ktor.server.content.negotiation)
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.serialization.kotlinx.json)
