@@ -35,10 +35,10 @@ fun Application.configureDatabases() {
         producer {
             clientId = "ping-client-id"
         }
-        registerSchemas {
-            using {
-                HttpClient()
-            }
-        }
+       registerSchemas {
+           using {
+               HttpClient()
+           }
+       }
     }
 }

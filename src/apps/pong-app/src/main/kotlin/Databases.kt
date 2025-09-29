@@ -14,10 +14,12 @@ import io.github.flaxoos.ktor.server.plugins.kafka.topic
 import io.ktor.client.HttpClient
 import io.ktor.server.application.*
 import io.ktor.server.config.tryGetString
+import java.time.Instant
+import java.time.ZoneId
 
 fun Application.configureDatabases() {
     install(Kafka) {
-        schemaRegistryUrl = environment.config.tryGetString("ktor.kafka.schema.registry.url")
+         schemaRegistryUrl = environment.config.tryGetString("ktor.kafka.schema.registry.url")
             ?: "http://localhost:7788"
         val pingTopic = TopicName.named("ping")
         topic(pingTopic) {
@@ -44,7 +46,10 @@ fun Application.configureDatabases() {
         }
         consumerConfig {
            consumerRecordHandler(pingTopic) { record ->
-               println("Received ping: ${record.value()}")
+               val millis: Long = (record.value().get(0) as Number).toLong()
+               println("Received ping: ${record.value()} (-> ${
+                   Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault())
+               })")
                println("From partition: ${record.partition()}, offset: ${record.offset()}")
            }
         }
